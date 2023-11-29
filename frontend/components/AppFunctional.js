@@ -121,8 +121,6 @@ export default function AppFunctional(props) {
     .then(res => {
       setMessage(res.data.message)
       setEmail(initialEmail)
-      setIndex(initialIndex)
-      setSteps(initialSteps)
     }).catch(err => {
       setMessage(err.response.data.message)
      
