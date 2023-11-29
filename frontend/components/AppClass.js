@@ -69,10 +69,10 @@ export default class AppClass extends React.Component {
   // THE FOLLOWING HELPERS ARE JUST RECOMMENDATIONS.
   // You can delete them and build your own logic from scratch.
 
-  getX = () => {
+  getY = () => {
     return Math.floor(this.state.index / 3 ) + 1;
   }
-  getY = () => {
+  getX = () => {
     return (this.state.index % 3) + 1;
   }
 
@@ -118,6 +118,8 @@ export default class AppClass extends React.Component {
     .then(res => {
       // console.log( res )
       this.setState( { message: res.data.message, email: '' } );
+      this.setState({steps: initialSteps})
+      this.setState({index: initialIndex})
     }).catch(err => {
       // console.error( err )
       this.setState( { message: err.response.data.message, email: '' } );
@@ -131,7 +133,7 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={className}>
         <div className="info">
           <h3 id="coordinates">Coordinates ({this.getXY()})</h3>
-          <h3 id="steps">You moved {this.state.steps} times</h3>
+          <h3 id="steps">{ this.state.steps === 1 ? `You moved 1 time` : `You moved ${this.state.steps} times`}</h3>
         </div>
         <div id="grid">
           {
